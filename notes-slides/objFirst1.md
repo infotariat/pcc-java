@@ -1,6 +1,6 @@
 # Objects First with BlueJ
 ---
-## Chapter 1
+## Chapter 2, Part 1
 ### Main concepts to be covered (Part A)
 * fields
 * constructors
@@ -215,3 +215,140 @@ public void printTicket()
 * Add a constructor that takes a parameter **newName** and uses it to initialize **name**.
 * Add a method called **hello** that takes no parameters and prints "Hello, **name**!", substituting the name.
 * Add a method called **goodbye** that prints "Bye, **name**!"
+
+## Chapter 2, Part 2
+
+### Main concepts to be covered
+* Conditional statements
+* Local variables
+* Calling methods
+
+### Reflecting on the ticket machines
+* Their behavior is inadequate in several ways:
+    * No checks on the amounts entered
+    * No refunds
+    * No checks for a sensible initialization
+* How can we do better?
+    * We need more sophisticated behavior.
+
+### Making choices in everyday life
+* If I have enough money, I go for a meal
+* Otherwise I stay home and watch a movie.
+
+```
+if (I have enough money left) {
+    go for meal;
+} else {
+    stay home and watch movie;
+}
+```
+
+### Making choices in Java
+```
+if (perform some test) {
+    Do these statements if test returned true
+} else {
+    do this, i.e. if test returned false
+}
+```
+
+### Making a choice in the ticket machine
+```java
+public void insertMoney(int amount)
+{
+    if (amount > 0) {
+        balance = balance + amount;
+    } else {
+        System.out.println(
+            "Use a positive amount: " +
+            amount
+        );
+    }
+}
+```
+
+### Exercise
+* In the **Greeting** class:
+    * Add a method called **checkAge** that takes an **int** parameter **age** and prints either
+        * Eligible to vote
+    * or
+        * Too young to vote
+    * Assume that 18 is the voting age.
+* Extra: if too young to vote, print the number of years remaining until eligible.
+* Extra: If age entered is negative, print an error
+
+### Variables: a recap
+* Fields are one sort of variable:
+    * They store values through the life of an object.
+    * They are accessible throughout the class.
+* Parameters are another sort of variable:
+    * They receive values from outside the method.
+    * They help a method complete its task.
+    * Each call to the method receives a fresh set of values.
+    * Parameter values are short lived.
+
+### Local variables
+* Methods can define their own, *local* variables:
+    * Short-lived, like parameters.
+    * The method sets their values - unlike parameters, they do not receive external values.
+    * Used for "temporary" calculation and storage.
+    * They exist only as long as the method is being executed (*Lifetime*).
+    * They are only accessible from within the method (*Scope*).
+* A local variable:
+
+```java
+public int refundBalance()
+{
+    int amountToRefund;
+    amountToRefund = balance;
+    balance = 0;
+    return amountToRefund;
+}
+```
+Notice the lack of a visibility modifier in the line
+```int amountToRefund;```
+which declares the *local* variable.
+
+### Exercise
+* In your **Greeting** class, modify the **hello** method as follows:
+    * Create a local variable of type **String** called **greetingString**
+    * Set **greetingSTring** equal to the string you want to print, such as "Hello, **name**!"
+    * Change the print statement to print the variable **greetingString**
+* Extra: do the same with **goodbye**
+
+### Review: classes
+* Classes contain:
+    * Fields - store values that determine an object's *state*.
+    * Constructors - initialize objects, particularly their fields.
+    * Methods - implement the behavior of objects.
+
+### Review: variables
+* Types of variables include:
+    * Fields - store an object's state, persist for the lifetime of the object.
+    * Parameters - used to receive values into a constructor or method.
+    * Local variables - used for short-lived temporary storage.
+
+### Calling methods
+* To call a method on the same object:
+    * If the method returns a value:
+```java
+ReturnType var = methodName(params);
+```
+    * If the method does not return a value:
+```java
+methodName(params);
+```
+* To call a method on a different object:
+    * If the method returns a value:
+```java
+ReturnType var = object.methodName(params);
+```
+    * If the method does not return a value:
+```java
+object.methodName(params);
+```
+
+### Exercise
+* In your **Greeting** class, modify the **checkAge** method as follows:
+    * Call the **hello** method to print a greeting, *then* print the voting message.
+* Extra: call **goodbye** after printing the voting message.
