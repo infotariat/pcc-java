@@ -145,3 +145,39 @@ public int getPrice()
 * An accessor method returns a value *(result)* of the type given in the header.
 * The method will contain a **return** statement to return the value.
 * Remember: returning is *not* printing!
+
+### Mutator methods
+* Have a similar method structure: *header* and *body*.
+* Used to *mutate* (i.e., change) an object's state.
+* Achieved through changing the value of one or more fields.
+    * Typically contain assignment statements.
+    * Often receive parameters.
+
+```java
+public void insertMoney(int amount)
+{
+    balance = balance + amount;
+}
+```
+
+### **set** mutator methods
+* Fields often have dedicated **set** mutator methods, known as *setters*.
+* These have a simple, distinctive form:
+    * **void** return type
+    * method name related to the field name
+    * single parameter, with the same type as the type of the field
+    * a single assignment statement
+
+### A typical **set** method
+```java
+public void setDiscount(int amount)
+{
+    discount = amount;
+}
+```
+
+### Protective mutators
+* A **set** method does not have to assign the parameter to the field.
+* The parameter may be checked for validity and rejected if inappropriate.
+* Mutators thereby protect fields.
+* Mutators support *encapsulation*.
