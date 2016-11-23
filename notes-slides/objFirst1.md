@@ -181,3 +181,37 @@ public void setDiscount(int amount)
 * The parameter may be checked for validity and rejected if inappropriate.
 * Mutators thereby protect fields.
 * Mutators support *encapsulation*.
+
+### Printing from methods
+```java
+public void printTicket()
+{
+    // Simulate the printing of a ticket
+    System.out.println("###################");
+    System.out.println("# The BlueJ Line ");
+    System.out.println("# Ticket");
+    System.out.println("# " + price + " cents.");
+    System.out.println("###################");
+    System.out.println();
+
+    // Update the total collected with the balance.
+    total = total + balance;
+    // Clear the balance.
+    balance = 0;
+}
+```
+
+### Method Summary
+* Methods implement all object behavior.
+* A method has a name and a return type.
+    * The return type may be **void**.
+    * A non-**void** return type means the method will return a value to its caller.
+* A method might take parameters.
+    * Parameters bring values in from outside for the method to use.
+
+### Exercise
+* Create a class called **Greetings**.
+* Add a **String** field called **name**.
+* Add a constructor that takes a parameter **newName** and uses it to initialize **name**.
+* Add a method called **hello** that takes no parameters and prints "Hello, **name**!", substituting the name.
+* Add a method called **goodbye** that prints "Bye, **name**!"
