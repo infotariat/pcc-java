@@ -321,7 +321,7 @@ if (hours != null) {
 * **Double** fields: **0.0**
 * **Boolean fields: **false**
 
-### **this** with fields
+### this with fields
 * When a parameter has the same name as a field, it overshadows the field.
 * Use **this.fieldName** to refer to the field.
 ```java
