@@ -1,5 +1,4 @@
 # Objects First with BlueJ
----
 ## Chapter 3, Part 1
 
 ### Concepts
@@ -223,3 +222,165 @@ public String getDisplayValue()
     * A method called **even** that returns **true** if **number** is even
     * A method called **multipleOf** that takes a parameter and returns **true** if **number** is a multiple of the parameter.
     * Rewrite **even** to use **multipleOf**
+
+## Chapter 3, Part 2
+
+### Objects creating objects
+```java
+public class ClockDisplay
+{
+    private NumberDisplay hours;
+    private NumberDisplay minutes;
+    private String DisplayString;
+
+    public ClockDisplay()
+    {
+        hours = new NumberDisplay(24);
+        minutes = new NumberDisplay(60);
+        // ...
+    }
+}
+```
+* In the class **ClockDisplay**:
+    * ``` hours = new NumberDisplay(24);```
+        * Here **24** is an *actual* parameter
+* In the class **NumberDisplay**:
+    * ``` public NumberDisplay(int rolloverlimit) {}```
+        * Here **rolloverlimit** is a *formal* parameter
+
+### Creating objects - examples
+* Use the **new** operator to create objects
+```java
+Square wall = new Square();
+Project proj1 = new Project();
+Car myCar = new Car("Toyota", 0);
+```
+
+### Creating objects - exercise
+* Write a statement that creates
+    * A **Square** object
+    * A **Car** object with make "Ford" and 12000 miles
+    * A **Qwerty** object (constructor takes no parameters)
+
+### Calling a method on a different object
+* aka *external method call*
+* When no return value:
+```
+object.methodName(parameter-list);
+```
+* Java example:
+```java
+minutes.increment();
+```
+
+### Calling a method on the same object
+* aka *internal method call*
+* When no return value:
+```
+methodName(parameter-list)
+```
+* Java example:
+```java
+updateDisplay();
+```
+* No object name required
+* Optional: use **this** as object:
+```java
+this.updateDisplay();
+```
+
+### Method calling
+```java
+public void timeTick()
+{
+    // external method calls
+    minutes.increment();
+    if (minutes.getValue() == 0) {
+        // it just rolled over!
+        hours.increment();
+    }
+    // internal method call
+    updateDisplay();
+}
+```
+
+### **null**
+* **null** is a special value in Java
+* An object variable that is **null** is not pointing to any object
+* You can test for, and assign, **null**:
+```java
+hours = null;
+if (hours != null) {
+    // ...
+}
+```
+
+### Field default values
+* **Object** fields: **null**
+* **Int** fields: **0**
+* **Double** fields: **0.0**
+* **Boolean fields: **false**
+
+### **this** with fields
+* When a parameter has the same name as a field, it overshadows the field.
+* Use **this.fieldName** to refer to the field.
+```java
+public Dog {
+    private String breed;
+    public Dog(String breed) {
+        this.breed = breed;
+    }
+    // The "breed" in "this.breed" is a field
+    // The "breed" on the right side of the "=" is a parameter
+}
+```
+* Use this technique in *setters*, too!
+
+### Logical operators
+* Source code: NumberDisplay
+```java
+public void setValue(int replacementValue)
+{
+    if ((replacementValue >= 0) &&
+        (replacementValue < limit)) {
+            value = replacementValue;
+        }
+}
+```
+* \&\& i.e. "and", *both* conditions true
+* || i.e. "or", *either* condition true
+* ! i.e. "not", condition *not true*
+* Examples
+    * ``` (age >= 18) && validID```
+    * ``` (num < 1) || (num > 100)```
+    * ``` !done ```
+    * ``` (cat != null) && !cat.isPersian()```
+
+### Logical operators exercise
+* Write a boolean expression for each condition:
+    * **Int** variable **temp** is greater than 70 and less than 80
+    * **MathHelper** variable **m** is not positive (use the **positive** method)
+    * **Double** variable **amount** is greater than zero or **boolean** variable **override** is true.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### stub
