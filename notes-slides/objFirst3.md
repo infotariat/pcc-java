@@ -320,6 +320,7 @@ if (hours != null) {
 * **Int** fields: **0**
 * **Double** fields: **0.0**
 * **Boolean fields: **false**
+* 
 
 ### this with fields
 * When a parameter has the same name as a field, it overshadows the field.
@@ -347,9 +348,9 @@ public void setValue(int replacementValue)
         }
 }
 ```
-* \&\& i.e. "and", *both* conditions true
-* || i.e. "or", *either* condition true
-* ! i.e. "not", condition *not true*
+* **\&\&** i.e. "and", *both* conditions true
+* **||** i.e. "or", *either* condition true
+* **!** i.e. "not", condition *not true*
 * Examples
     * ``` (age >= 18) && validID```
     * ``` (num < 1) || (num > 100)```
