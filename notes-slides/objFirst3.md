@@ -361,26 +361,3 @@ public void setValue(int replacementValue)
     * **Int** variable **temp** is greater than 70 and less than 80
     * **MathHelper** variable **m** is not positive (use the **positive** method)
     * **Double** variable **amount** is greater than zero or **boolean** variable **override** is true.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### stub
