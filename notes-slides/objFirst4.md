@@ -129,3 +129,262 @@ public void printNameAtIndex(int index)
 * Add a method called **addName** that allows the user to add names to the end of the list
     * What parameter(s) should the method take?
 * Look up the **clear** method on **ArrayList** and add a method to **Names** called **clearNames** that clears the list of names.
+
+## Chapter 4, Part 2
+### Topics covered:
+* Collections
+* for-each loops
+* comparing String objects
+
+### ArrayList Summary
+* Declaration:
+```java
+ArrayList<Object> myList;
+```
+* Creation:
+```java
+myList = new ArrayList<Object>();
+```
+* Add element:
+```java
+myList.add(anObject);
+```
+* Retrieve element:
+```java
+myList.get(0);
+```
+* Number of elements:
+```java
+myList.size();
+```
+* Remove element:
+```java
+myList.remove(0);
+```
+
+### Features of ArrayList
+* Increases capacity as necessary
+* Keeps count of the number of elements:
+    * **size()** accessor
+* Keeps objects in order
+* Each object has an *index*
+    * Numbering starts at 0!
+    * An object's index can change as elements are added and removed
+
+### Removal affects numbering
+* Remove from a collection:
+```java
+catNames.remove(1);
+```
+* See slides for diagram of memory results
+
+### The general utility of indices
+* Using integers to index collections has a general utility:
+    * *next* is index + 1
+    * *previous* is index - 1
+    * *last* is list.size() - 1
+    * *the first three* is the items at indices 0, 1, 2
+* We could also think about accessing items in sequence: 0, 1, 2, ...
+
+### Retrieving an object
+```java
+public void listFile(int index)
+{
+    if (index >= 0 &&
+            index < files.size()) {
+                String filename = files.get(index);
+                System.out.println(filename);
+            } else {
+                // this is not a valid index
+            }
+}
+```
+
+### Names exercise
+* Update **printNameAtIndex** so that if the parameter **index** is out of range, it prints
+``` "No name at index x!" ```
+    * otherwise it prints the name as before
+* Add a method called **removeNameAtIndex** that removes the name at the given index.
+    * Challenge: print a message stating the name that was removed.
+    * Use the return value of **remove** (see API)
+
+### Iteration
+* Iteration allows repeating an action
+    * e.g. print all the file names in the organizer.
+* Java has several sorts of *loop statements*.
+    * **for-each**
+    * **for**
+    * **while**
+    * **do-while**
+* Collections: often want to repeat a task once for every object in the collection
+    * **for-each** is designed for this
+
+### For-each loop pseudo code
+General form of the for-each loop:
+```
+for (ElementType element : collection) {
+    loop body
+}
+```
+Pseudo-code expression of the actions of a for-each loop:
+For each *element* in *collection*, do the things in the *loop body*.
+
+### A Java example
+```java
+// List all the files in the organizer.
+public void listAllFiles()
+{
+    // for each filename in files, print out filename
+    for (String filename : files) {
+        System.out.println(filename);
+    }
+}
+```
+
+### For-each loop examples
+* Given:
+```java
+ArrayList<String> ids = ...;
+```
+* Write a for-each loop  that loops over the collection:
+```java
+for (String id : ids) {
+    // actions to repeat
+}
+```
+* Given:
+```java
+ArrayList<Car> carsOnLot = ...;
+```
+* Write a for-each loop that iterates over the collection:
+```java
+for (Car car: carsOnLot)
+```
+
+### For-each loop exercises
+* Write a for-each loop for each collection:
+```java
+ArrayList<Integer> codes = ...;
+ArrayList<Node> graphNodes = ...;
+```
+
+### Names exercise
+* Update **printNames** so that it prints each name on a separate line, e.g.:
+    * Friendly
+    * Snowball
+    * Max
+* Use a **for-each** loop
+
+### Selective processing
+* Statements can be nested, giving greater selectivity:
+```java
+public void findFiles(String searchString)
+{
+    for(String filename : files) {
+        if (filename.contains(searchString)) {
+            System.out.println(filename);
+        }
+    }
+}
+```
+### Critique of for-each
+* Easy to write
+* Termination happens naturally
+* The collection cannot be changed
+* There is no index provided
+    * Not all collections are index-based
+* It provides *definite iteration* aka *bounded iteration*
+
+### Names exercise
+* Add a method **printShortNames** that prints only those names that are less than 5 letters
+    * Use an if- statement in the loop
+* Challenge: write a method **averageNameLength** that calculates and returns the average length of the cat names.
+    * e.g. if the list contains "Friendly" (8 letters), "Snowball" (8), and "Max" (3), it should return ```(8+8+8)/3 = 6.33```
+
+### The String class
+* The **String** class is defined in the **java.lang** package.
+* It has some special features that need a little care.
+* In particular, comparison of **String** objects can be tricky.
+
+### Identity vs. Equality
+* Identity
+    * *Are these the same object?*
+    * Use **==** to compare
+* Equality
+    * *Do these two have the same value?*
+    * e.g. same name, same color
+    * Use **equals** method to compare
+
+### String equality
+* Use ```if(input.equals("bye"))```, which tests equality, rather than ```if(input=="bye")```, which tests identity.
+
+### String equality examples
+```java
+if (name1.equals(name2)) {
+    System.out.println("Same name!");
+}
+
+if (!name1.equals(name2)) {
+    System.out.println("Different names");
+}
+```
+
+### String exercise
+* Create a class called **StringComparator**
+* Write a method called **sameNames** with the signature below that takes two **String** parameters and returns true if they are the same (i.e., have the same value)
+```java
+public boolean sameNames(String name1, String name2)
+```
+
+### Five slides' worth of diagrams
+* See diagrams in slides for graphical picture of the memory events pertaining to String identity, equality
+
+### The problem with Strings
+* The compiler merges identical **String** literals in the program code.
+    * The result is reference equality for apparently distinct **String** objects.
+* But this cannot be done for identical strings that arise outside the program's code
+    * e.g., from user input
+
+### The auction project
+* The **auction** project provides further illustration of collections and iteration.
+* Examples of using **null**
+* Anonymous objects.
+* Chaining method calls.
+
+### null
+* Used with object types
+* Used to indicate *no object*
+* We can test if an object variable holds the **null** value:
+```java
+if(highestBid == null) {
+    // do something
+}
+```
+* Used to indicate *no bid yet*
+
+### Anonymous objects
+* Objects are often created and handed on elsewhere immediately:
+```java
+Lot furtherLot = new Lot(...);
+lots.add(furtherLot);
+```
+* We don't really need **furtherLot**:
+```java
+lots.add(new Lot(...));
+```
+
+### Chaining method calls
+* Methods often return objects
+* We often immediately call a method on a returned object.
+```java
+Bid bid = lot.getHighestBid();
+Person bidder = bid.getBidder();
+```
+* We can use the anonymous object concept and *chain* method calls:
+```java
+lot.getHighestBid().getBidder()
+```
+* Each method in the chain is called on the object returned from the previous method call in the chain.
+```java
+String name = lot.getHighestBid().getBidder().getName();
+```
