@@ -319,8 +319,7 @@ if (hours != null) {
 * **Object** fields: **null**
 * **Int** fields: **0**
 * **Double** fields: **0.0**
-* **Boolean fields: **false**
-* 
+* **Boolean** fields: **false**
 
 ### this with fields
 * When a parameter has the same name as a field, it overshadows the field.
