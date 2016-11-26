@@ -388,3 +388,79 @@ lot.getHighestBid().getBidder()
 ```java
 String name = lot.getHighestBid().getBidder().getName();
 ```
+## Chapter 4, Part 3
+##### Indefinite iteration - the while loop
+### Indefinite vs. Definite Iteration:
+* Definite iteration: we know in advance how many times the loop will execute
+    * Example: loop over a collection
+* Indefinite (unbounded) iteration: we don't know in advance how many times the loop will execute
+    * Example: search for an item
+### The while loop
+* Repeats a series of statements *while* (as long as) a condition is true
+* A boolean condition decides whether or not to keep going.
+* If the condition is true, make another loop
+* If/when the condition is false, exit the loop
+
+### While loop pseudo code
+```
+while(loop condition) {
+    loop body
+}
+```
+##### while we wish to continue, do things in the loop body
+
+### Looking for your keys
+```
+while (the keys are missing) {
+    look in the next place;
+}
+```
+##### Or:
+```
+while(not (the keys have been found)) {
+    look in the next place;
+}
+```
+
+```
+boolean searching = true;
+while(searching) {
+    if (they are in the next place) {
+        searching = false;
+    }
+}
+```
+##### Suppose we don't find them?
+
+### A Java example
+```java
+/**
+ * List all file names in the organizer.
+ */
+public void listAllFiles()
+{
+    int index = 0;
+    while(index < files.size()) {
+        String filename = files.get(index);
+        System.out.println(filename);
+        index++;
+    }
+}
+```
+In algorithm-speak:
+```
+while the value of index is less than the size of the collection,
+get and print the next file name, and then increment index
+```
+### While loop collection example
+* Write a while loop that loops over the collection
+``` ArrayList<Car> carsOnLot = ...;```
+* Solution:
+```java
+int index = 0;
+while (index < carsOnLot.size()) {
+    Car car = carsOnLot.get(index);
+    // ...
+    index++;
+}
+```
