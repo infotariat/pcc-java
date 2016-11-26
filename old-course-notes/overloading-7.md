@@ -99,3 +99,133 @@ public static void main(String[] args)
     result = multiple(x, b, a);
 }
 ```
+Note that all of these examples use static methods, but instance methods can also be
+overloaded in the same way.
+
+#### Overloading constructors
+##### How to define overloaded constructors
+You can define more than one constructor with the same name. If there is more than one
+constructor in a class, Java uses the signature to decide which one to use.
+
+Here is a class with two constructors, each with different signatures:
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    public Employee(String l, String f, int a)
+    {
+        lastName = l;
+        firstName = f;
+        age = a;
+    }
+
+    public Employee(String l, String f)
+    {
+        lastName = l;
+        firstName = f;
+    }
+}
+```
+##### How to use overloaded constructors
+Use overloaded constructors just as you would any other constructors. Java will use the
+signature to figure out which one to use. In the following example:
+* For the **emp** object, Java uses the second constructor in the **Employee** class.
+* For the **emp2** object, the first constructor is used.
+```java
+public static void main(String[] args)
+{
+    Employee emp = new Employee("Jones", "Ed");
+    Employee emp2 = new Employee("Nguyen", "Cathy", 29);
+}
+```
+
+It is an error if you try to create an object that lacks a matching constructor,
+as we see below:
+```java
+public static void main(String[] args)
+{
+    Employee emp = new Employee("Jones"); // no matching constructor, ERROR
+}
+```
+
+#### this reference
+The **this** reference points to the object being used. It is not normally needed,
+but when using accessor and mutator methods, it can be used.
+
+Consider this example: it is the **Employee** class with accessor and mutator methods
+for the **lastName** variable. Notice the **setLastName** method. It is sent a **String**
+which we call **s**. **s** is assigned to the **lastName** variable. Java can understand this.
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    // mutator method for lastName variable
+    public void setLastName(String s)
+    {
+        lastName = s;
+    }
+
+    // accessor method for lastName variable
+    public String getLastName()
+    {
+        return lastName;
+    }
+}
+```
+
+But what if we named the variable **lastName** instead of **s**, as in the following
+example?
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    // mutator method for lastName variable
+    public void setLastName(String lastName)
+    {
+        lastName = lastName; // UH OH!
+    }
+
+    // accessor method for lastName variable
+    public String getLastName()
+    {
+        return lastName;
+    }
+}
+```
+Now Java will be confused when presented with the assignment statement ```lastName = lastName;```
+
+To eliminate the confusion, you could use **this** reference:
+``` this.lastName = lastName;```
+
+Now the complete example would look like this:
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    // mutator method for lastName variable
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName; // UH OH!
+    }
+
+    // accessor method for lastName variable
+    public String getLastName()
+    {
+        return lastName;
+    }
+}
+```
+The **this** reference means "the current object." So **this.lastName** means the **lastName**
+variable of the current object. 
