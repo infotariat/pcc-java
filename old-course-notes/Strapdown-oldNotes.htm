@@ -319,6 +319,650 @@ public void setUp(int maxNumberOfStudents) // method header
 
 #### Method body
 The method body consists of everything between the beginning and ending brackets.
+
+## Selection
+
+#### Objectives
+* Use if..else structures
+* Use a switch statement
+* Understand nesting of structures
+* Use AND, OR, NOT operators
+* Use conditional operators
+
+#### Contents
+* Selection
+* Relational and Logical Operators
+* Additional Reading
+
+#### Selection
+##### A Java program can make a selection between alternate paths by using
+    * An **if..else** structure
+    * A **switch** statement
+
+#### if..else structure
+Use the **if..else** structure to choose between two or more paths. The part in the **( )**
+is called a *condition*. The condition is either true or false (i.e. *Boolean*). For example,
+suppose you need to determine a rate for school tuition based on whether a person lives
+in-state or out-of-state. A simple **if..else** statement could be used.
+```java
+String status;
+status = "Instate";
+
+if (status.equals("Instate")) {
+    tuition = 1000;
+} else {
+    tuition = 250;
+}
+```
+The condition here is ```status.equals("Instate")```, seen between the parentheses.
+
+Here are some other examples:
+```java
+int age;
+age = 55;
+double rate;
+
+if (age >= 60)
+    rate = .55;
+else
+    rate = .77;
+```
+
+```java
+int x = 2;
+
+// if with no else
+if (x < 3)
+    System.out.println("true");
+```
+
+As a matter of safety, always use **{ }** to enclose statements in an **if..else**.
+```java
+int x = 5;
+
+if (x < 3)
+{
+    System.out.println("true statement 1");
+    System.out.println("true statement 2");
+}
+else
+{
+    System.out.println("false");
+}
+```
+#### Nesting
+You can nest **if..else** structures; that is, put them inside one another. The code below shows the **if..else** using ```if (y < z)``` nested inside the **if..else** using ```if (x < y)```.
+```java
+// nested if else statements
+y = 5;
+z = 6;
+if(x < y)
+{
+    if (y < z)
+    {
+        System.out.println("true");
+    }
+    else
+    {
+        System.out.println("false");
+    }
+}
+else
+{
+    System.out.println("true");
+}
+```
+#### Multiple conditions using logical operators
+You can have more than one condition by joining them with a logical operator.
+##### These are the two logical operators:
+* **&&** (AND)
+* **||** (OR)
+
+#### && (AND operator)
+```java
+x = 4;
+y = 5;
+z = 6;
+
+if (x < y && y < z) {
+    // actions go here
+}
+```
+All conditions must be true when linked with **&&** for the entire condition to be true.
+
+#### switch statement
+The **switch** statement is used for many conditions. For example,
+when you have to test for each state or different countries, or
+many ages.
+
+You *must* test an integer or character value.
+
+Be sure to use the **break** keyword in each case.
+
+Be sure to use the **default** keyword to catch other cases.
+
+
+Code examples:
+```java
+int value;
+
+switch(value)
+{
+    case 1:
+        System.out.println("The value is one.");
+        break;
+    case 3:
+        System.out.println("The value is three");
+        break;
+    case 6:
+        System.out.println("The value is six");
+        break;
+    default:
+        System.out.println("The value is I don't know");
+}
+```
+```java
+char letter;
+
+switch (letter)
+{
+    case 'a':
+        // etc
+}
+```
+
+#### Relational and logical operators
+
+##### The relational operators are:
+* **==**, the *equals* operator
+* **!=**, the *not equals* operator
+* **>**, the *greater than* operator
+* **<**, the *less than* operator
+* **>=**, the *greater than or equal to* operator
+* **<=**, the *less than or equal to* operator
+
+These are used to compare two expressions and give a true or
+false result.
+
+## Methods
+##### Number 6 in the series of old instructor notes
+
+#### Objectives
+* Create a method with arguments
+* Create a method with return value
+* Use method arguments
+* Use the return keyword
+* Use the static keyword
+* Write and invoke static methods
+
+#### Anatomy of a method
+A *method* is aseries of statements (a section of code) that does a certain
+job. Methods follow a certain format.
+
+##### A method must have these three parts:
+* Header
+* Starting and ending curly braces
+* Body
+
+Here is a simple method:
+```java
+public static void main(String[] args) // header
+{                                      // start brace
+    System.out.println("Hello.");      // body
+    System.out.println("Welcome to Java.");
+}                                      // end brace
+```
+##### The method header contains:
+* The name of the method
+* The return type
+* An access modifier
+* Any arguments (optional)
+
+```java
+public static void main(String[] args)
+{
+    // code goes here
+}
+```
+
+#### Arguments
+The header contains any arguments. An argument is a value that is sent into
+the method. Arguments are optional. Arguments are enclosed in parentheses.
+Parentheses are required, even if there are no arguments:
+```java
+public static void main(String[] args) {
+    // etc...
+}
+
+private int display() {
+    // etc...
+}
+```
+More than one argument can be sent to a method. Separate argument by a comma:
+```java
+public void add(int x, int y) {
+    // etc...
+}
+```
+#### How to design a method
+When designing a method, think of it as a box where one or more pieces of data
+enter (*inputs*) and one piece of data exits (*output*). Inside the box, the method transforms the input into the output.
+
+##### Steps in designing a method
+* Explain what the method should do, in simple terms.
+* Determine the output and its data type, and give it a name.
+* Determine the inputs, how many will be needed, and their data types, and give them names.
+* Determine the *algorithm*, or *recipe*, that changes the input(s) into the output, and give the method a name.
+* Implement the method in Java.
+
+##### Simple example: adding two numbers
+* step one:
+```
+This method should add two numbers and give the result.
+```
+* step two:
+```
+The output should be a double. I'll name it sum.
+```
+* step three:
+```
+The method needs to accept two numbers to add.
+They should both be doubles.
+Their names will be x and y.
+```
+* step four:
+```
+The method should be called add.
+The algorithm is:
+    Get the numbers.
+    Add the numbers.
+    Return the result.
+```
+* step five:
+```java
+public double add(double x, double y)
+{
+    double answer;
+    answer = x + y;
+    return answer;
+}
+```
+An easier implementation:
+```java
+public double add(double x, double y)
+{
+    return x + y;
+}
+```
+
+#### Static methods
+Review: a *method* is a programming unit that performs a specific
+task.
+##### There are two categories of methods:
+* *static* (also called class methods)
+* *instance* (also called object methods)
+
+#### The difference between a static method and an instance method
+A *static method* does not need an object in order to be invoked (called). Static methods are
+also called *class methods*. This section only discusses static methods; instance methods
+are covered later in the course.
+
+#### How to declare a static method
+Methods always have to be declared inside a class. To declare a method as static, simply
+use the **static** keyword in the method definition:
+```java
+public class Employee
+{
+    public static int getAge()
+    {
+        // code goes here
+    }
+}
+```
+#### How to invoke a static method from another method
+A static method is invoked by specifying its name preceded by the class it is defined
+in. Notice in the code below how the *classname.methodname* is used to invoke a static
+method. Methods always have to be invoked from another method:
+```java
+public static void main(String[] args) {
+    Employee.getAge(); // invoking the method
+}
+```
+#### How to pass arguments to a method
+Static methods can be written to accept any number of *arguments* (or no arguments). An
+argument is simply a value passed to a method. For instance, if you had a method that could
+add two numbers, the two numbers you actually want to add would be passed to the method
+as arguments. The arguments passed to the method must specify a data type and a name. You
+can pass any types and number of arguments, and you can pass arguments of different types:
+```java
+public static double addTwo(double x, double y)
+{
+    return x + y;
+}
+```
+#### How to return a value from a method
+In the example above, notice that the method returns the result of the addition. A method
+can only return one value. This is called a *return value*. It is done by using the **return**
+keyword: ```return x + y;```
+
+#### How to create a method that does not return a value
+A method does not have to return a value. In this case, use the **void** keyword:
+```java
+public static void aMethod()
+{
+    // code goes here
+}
+```
+
+#### How to invoke methods
+When you invoke a method, you must match the number and types of arguments it expects. For
+example, in the **addTwo** method above, it expects two **double** values. That is what
+you must send to the method. It is always an error if you do not do this.
+```java
+public class Test
+{
+
+    public static void main(String[] args)
+    {
+        double a = 5;
+        double b = 66;
+        double result;
+
+        result = addTwo(a, b);
+    }
+
+    public static double addTwo(double x, double y)
+    {
+        return x + y;
+    }
+}
+```
+#### How to capture the return value of a method
+For a method that returns a value, the calling method needs to capture it. Again, we use
+the **addTwo** method as an example. Notice in the code for **Test** how the variable
+**result** is used to capture the return value from **addTwo**.
+
+## Method overloading
+##### Number 7 in old course notes
+#### Objectives
+* Overload a method
+* Overloading constructors
+* **this** reference
+
+#### Overloading methods
+##### How to define overloaded methods
+You can define more than one method with the same name. This is called *method overloading*.
+Both class and instance methods can be overloaded.
+
+Overloading does pose a problem: when you invoke a method, you use its name. So if two
+methods have the same name, how does Java know which one it should use? This problem
+is solved by making each overloaded method have its own *signature*.
+
+##### A method signature is determined by:
+* The number of arguments passed to it
+* The types of the arguments
+
+Here is a method named **multiply**. It accepts two arguments, both **double**. The portion
+within the parentheses is the signature:
+```java
+public static double multiply(double x, double y)
+{
+    return (x * y);
+}
+```
+Here is another method, also named **multiply**, but its signature is different:
+```Java
+public static double multiply(double x, double y, double z)
+{
+    return (x * y * z);
+}
+```
+Java can tell these two methods apart by their signatures. They are different, in this case,
+because the number of arguments is different (two vs. three).
+
+Methods with different types on the arguments also have different signatures. Consider this
+example, where both methods have two arguments, but the types are different:
+```java
+public static long multiply(long x, double y)
+{
+    return (x * y);
+}
+
+public static long multiply(int x, long y)
+{
+    return (x * y);
+}
+```
+#### How to use overloaded methods
+Use an overloaded method just like you would any other method. Java will determine which
+overload to use based on the signature of the method. Using the above example, with the
+two **multiply** methods, Java will choose the second **multiply** method because
+**multiply** is invoked with **int** and **long** arguments:
+```java
+public static void main(String[] args)
+{
+    int a = 5;
+    long b = 55;
+    long result = 0;
+
+    result = multiply(a, b);
+}
+```
+In this example, Java chooses the first **multiply** method:
+```java
+public static void main(String[] args)
+{
+    double a = 5;
+    long b = 55;
+    long result = 0;
+
+    result = multiply(a, b);
+}
+```
+The next example would cause an error, because there is no overloaded method that matches
+the call:
+```java
+public static void main(String[] args)
+{
+    double a = 5;
+    double b = 55;
+    long result = 0;
+
+    result = multiply(b, a); // two doubles, causes error
+}
+```
+This next example also causes an error, because there is no matching method:
+```java
+public static void main(String[] args)
+{
+    double a = 5;
+    double b = 55;
+    int x = 66;
+    long result = 0;
+
+    result = multiple(x, b, a);
+}
+```
+Note that all of these examples use static methods, but instance methods can also be
+overloaded in the same way.
+
+#### Overloading constructors
+##### How to define overloaded constructors
+You can define more than one constructor with the same name. If there is more than one
+constructor in a class, Java uses the signature to decide which one to use.
+
+Here is a class with two constructors, each with different signatures:
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    public Employee(String l, String f, int a)
+    {
+        lastName = l;
+        firstName = f;
+        age = a;
+    }
+
+    public Employee(String l, String f)
+    {
+        lastName = l;
+        firstName = f;
+    }
+}
+```
+##### How to use overloaded constructors
+Use overloaded constructors just as you would any other constructors. Java will use the
+signature to figure out which one to use. In the following example:
+* For the **emp** object, Java uses the second constructor in the **Employee** class.
+* For the **emp2** object, the first constructor is used.
+```java
+public static void main(String[] args)
+{
+    Employee emp = new Employee("Jones", "Ed");
+    Employee emp2 = new Employee("Nguyen", "Cathy", 29);
+}
+```
+
+It is an error if you try to create an object that lacks a matching constructor,
+as we see below:
+```java
+public static void main(String[] args)
+{
+    Employee emp = new Employee("Jones"); // no matching constructor, ERROR
+}
+```
+
+#### this reference
+The **this** reference points to the object being used. It is not normally needed,
+but when using accessor and mutator methods, it can be used.
+
+Consider this example: it is the **Employee** class with accessor and mutator methods
+for the **lastName** variable. Notice the **setLastName** method. It is sent a **String**
+which we call **s**. **s** is assigned to the **lastName** variable. Java can understand this.
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    // mutator method for lastName variable
+    public void setLastName(String s)
+    {
+        lastName = s;
+    }
+
+    // accessor method for lastName variable
+    public String getLastName()
+    {
+        return lastName;
+    }
+}
+```
+
+But what if we named the variable **lastName** instead of **s**, as in the following
+example?
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    // mutator method for lastName variable
+    public void setLastName(String lastName)
+    {
+        lastName = lastName; // UH OH!
+    }
+
+    // accessor method for lastName variable
+    public String getLastName()
+    {
+        return lastName;
+    }
+}
+```
+Now Java will be confused when presented with the assignment statement ```lastName = lastName;```
+
+To eliminate the confusion, you could use **this** reference:
+``` this.lastName = lastName;```
+
+Now the complete example would look like this:
+```java
+public class Employee
+{
+    private String lastName;
+    private String firstName;
+    private int age;
+
+    // mutator method for lastName variable
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName; // UH OH!
+    }
+
+    // accessor method for lastName variable
+    public String getLastName()
+    {
+        return lastName;
+    }
+}
+```
+The **this** reference means "the current object." So **this.lastName** means the **lastName**
+variable of the current object.
+
+## Object types
+##### Number 8 in series of old course notes
+
+#### Object types in Java
+Suppose you have a class named **Dog** defined like this:
+```java
+public class Dog
+{
+    public Dog()
+    {
+        // code etc...
+    }
+}
+```
+To create a new object from a class, the general formula is:
+
+``` classname objectname = new classname();```
+
+Or, in this example, since you want to create an object from class **Dog**:
+
+``` Dog d = new Dog();```
+
+This will create a new object from class **Dog** in memory.
+
+##### In fact, two different things are created in memory:
+* An object reference
+* The actual object
+
+``` Dog d``` creates the object reference.
+
+``` new Dog();``` creates the actual object. It is the **new** keyword that actually causes
+the object to be created in memory.
+
+The two parts are related in that the object reference contains the memory address of the
+object. Other languages (C, C++) call this a *pointer*, but Java does not use that term.
+
+You can create the object reference at an earlier time and later create the actual object,
+like this:
+```java
+Dog d;
+d = new Dog();
+```
+
+By the way, *primitive* types, such as **int**, **long**, **float**, **double**, etc., are
+not created this way. Primitive types simply exist in memory as variables. They do not have
+an object reference since they are not objects.
+
+Recap: any time you create an object it exists in two components: object reference, and object.
+
 </xmp>
     <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
